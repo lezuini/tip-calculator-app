@@ -313,6 +313,12 @@ h3 {
   }
 }
 
+@media screen and (max-width: 680px) {
+  .total p {
+    font-size: 2rem;
+  }
+}
+
 @media screen and (max-width: 560px) {
   .App-header {
     padding: 3.25rem 0 2.5rem;
@@ -337,5 +343,8 @@ h3 {
 @media screen and (max-width: 420px) {
   .calculator {
     padding: 2rem 1.5rem;
+  }
+  .results-cont {
+    padding: 1.5rem;
   }
 }
