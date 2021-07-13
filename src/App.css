@@ -9,6 +9,7 @@
   --hover: #61918a;
   --hover-active: #9fe8df;
   --error: crimson;
+  --disabled: #0d686d;
 }
 
 .App {
@@ -99,7 +100,7 @@ input[type="number"] {
 
 .input span {
   position: absolute;
-  top: 0.25rem;
+  top: 0.3rem;
   left: 1rem;
   z-index: 100;
   color: var(--dark-grayish-cyan-2);
@@ -127,6 +128,9 @@ input[type="number"] {
 }
 .reset:active {
   background-color: var(--light-grayish-cyan-1) !important;
+}
+.reset:disabled {
+  background-color: var(--disabled) !important;
 }
 
 label,
@@ -171,12 +175,12 @@ input[type="radio"]:checked + label {
 }
 
 input[type="number"]:focus {
-  outline: var(--strong-cyan) solid 0.125rem;
+  outline: var(--strong-cyan) solid 2px;
 }
 
 input[type="number"].error,
 input[type="number"].error:focus {
-  outline: var(--error) solid 0.125rem;
+  outline: var(--error) solid 2px;
 }
 
 .error-msg {

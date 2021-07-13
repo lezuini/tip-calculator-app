@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const initialChecked = {
   5: false,
@@ -16,10 +16,15 @@ const radioChecked = {
   50: false,
 };
 
-const Tips = ({ updateTip }) => {
+const Tips = ({ updateTip, reset }) => {
   const [tip, setTip] = useState(15);
   const [tipCustom, setTipCustom] = useState("");
   const [checked, setChecked] = useState(initialChecked);
+
+  useEffect(() => {
+    setChecked(initialChecked);
+    setTipCustom("");
+  }, [reset]);
 
   const handleChange = (e) => {
     let value = Number(e.target.value);
@@ -93,7 +98,7 @@ const Tips = ({ updateTip }) => {
           placeholder="Custom"
           min={0}
           onChange={handleChange}
-          value={tipCustom}
+          value={tipCustom ? tipCustom : ""}
         />
       </div>
     </div>

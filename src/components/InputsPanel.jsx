@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import Tips from "./Tips";
+import { ReactComponent as SVGpp } from "../images/icon-person.svg";
+import { ReactComponent as SVGdl } from "../images/icon-dollar.svg";
 
 const initialData = {
-  bill: 0,
+  bill: "",
   tipP: 15,
   people: 1,
 };
@@ -12,7 +14,7 @@ const initialNewData = {
   total: 0,
 };
 
-const InputsPanel = ({ setDb, reset }) => {
+const InputsPanel = ({ setDb, reset, setDisabled }) => {
   const [data, setData] = useState(initialData);
   const [newData, setNewData] = useState(initialNewData);
 
@@ -55,6 +57,7 @@ const InputsPanel = ({ setDb, reset }) => {
       ...data,
       bill,
     });
+    setDisabled(false);
   };
 
   const updateTip = (tipP) => {
@@ -62,6 +65,7 @@ const InputsPanel = ({ setDb, reset }) => {
       ...data,
       tipP,
     });
+    setDisabled(false);
   };
 
   const updatePeople = (e) => {
@@ -70,6 +74,7 @@ const InputsPanel = ({ setDb, reset }) => {
       ...data,
       people,
     });
+    setDisabled(false);
   };
 
   return (
@@ -78,31 +83,31 @@ const InputsPanel = ({ setDb, reset }) => {
       <div>
         <h3>Bill</h3>
         <div className="input">
-          <span>$</span>
+          <span>{<SVGdl />}</span>
           <input
             type="number"
             placeholder="0"
             min={0}
             onChange={updateBill}
-            value={data.bill}
+            value={data.bill ? data.bill : ""}
           />
         </div>
       </div>
       {/* Tip percentage */}
-      <Tips updateTip={updateTip} />
+      <Tips updateTip={updateTip} reset={reset} />
       {/* Number of People */}
       <div>
         <h3>Number of People</h3>
         {data.people === 0 && <span className="error-msg">Can't be zero</span>}
         <div className="input">
-          <span>$</span>
+          <span>{<SVGpp />}</span>
           <input
-            className={data.people === 0 ? "error" : ""}
+            className={`${data.people === 0 ? "error" : ""} pp-svg`}
             type="number"
             placeholder="0"
             min={0}
             onChange={updatePeople}
-            value={data.people}
+            value={data.people ? data.people : ""}
           />
         </div>
       </div>
